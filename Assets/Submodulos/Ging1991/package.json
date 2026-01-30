@@ -1,9 +1,0 @@
-{
-  "name": "com.ging1991.infraestructura",
-  "version": "1.0.2",
-  "displayName": "Ging1991:Infraestructura",
-  "description": "Common infrastructure code for Unity projects.",
-  "unity": "2020.3",
-  "keywords": ["infrastructure", "utilities"],
-  "dependencies": {}
-}
