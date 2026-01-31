@@ -11,6 +11,7 @@ using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Cartas.Persistencia;
 using Ging1991.Core.Interfaces;
 using Bounds.Persistencia.Datos;
+using Bounds.Visuales;
 
 namespace Bounds.Tienda {
 
@@ -54,7 +55,7 @@ namespace Bounds.Tienda {
 		void OnMouseDown() {
 			MostrarRecompensas();
 
-			//GameObject.Find("GestorVisual").GetComponent<GestorVisual>().Animar("GOLPE");
+			GameObject.Find("GestorVisual").GetComponent<GestorVisual>().Animar("GOLPE", "FxExplosion");
 			GestorDeSobres lector = sobreControl.gestorDeSobres;
 			lector.SetCantidad(coleccion.codigo, lector.GetCantidad(coleccion.codigo) - 1);
 			EstablecerCantidad();

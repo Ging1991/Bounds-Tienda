@@ -628,11 +628,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 929875151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 186cacf36c4f06140b072ba5a1dd9cad, type: 3}
+  m_Script: {fileID: 11500000, guid: 290af22307abdc24f8b7ec28108b212d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carpetaResources: Sonidos
-  maxInstancias: 3
+  direccion: Sonidos
+  maxInstancias: 5
 --- !u!1 &981931970
 GameObject:
   m_ObjectHideFlags: 0
