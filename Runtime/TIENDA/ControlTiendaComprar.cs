@@ -9,6 +9,7 @@ namespace Bounds.Tienda {
 	public class ControlTiendaComprar : MonoBehaviour {
 
 		public Configuracion configuracion;
+		public Billetera billetera;
 		public ParametrosControl parametrosControl;
 		public DireccionRecursos carpetaColecciones;
 		public GestorDeSobres gestorDeSobres;
@@ -18,6 +19,7 @@ namespace Bounds.Tienda {
 			parametrosControl.Inicializar();
 			ParametrosEscena parametros = parametrosControl.parametros;
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
+			billetera = new(parametros.direcciones["BILLETERA"]);
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
 			escenaAnterior = parametros.escenaPadre;

@@ -8,6 +8,7 @@ namespace Bounds.Tienda {
 		public override void SetParametros() {
 			parametros.direcciones["SOBRES"] = new DireccionDinamica("TIENDA", "SOBRES.json").Generar();
 			parametros.direcciones["CONFIGURACION"] = new DireccionDinamica("CONFIGURACION", "CONFIGURACION.json").Generar();
+			parametros.direcciones["BILLETERA"] = new DireccionDinamica("CONFIGURACION", "BILLETERA.json").Generar();
 			parametros.direcciones["COLECCIONES"] = "COLECCIONES";
 			parametros.escenaPadre = "TEST";
 		}

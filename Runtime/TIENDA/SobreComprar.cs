@@ -53,18 +53,18 @@ namespace Bounds.Tienda {
 
 
 		void OnMouseDown() {
-			Configuracion configuracion = controlTienda.configuracion;
-			if (configuracion.LeerOro() >= precio)
+			Billetera billetera = controlTienda.billetera;
+			if (billetera.LeerOro() >= precio)
 				VentanaControl.CrearVentanaConfirmar($"¿Desea comprar el sobre por ${precio}?", this);
 			else
-				VentanaControl.CrearVentanaAceptar($"No tiene suficiente oro: ${configuracion.LeerOro()}");
+				VentanaControl.CrearVentanaAceptar($"No tiene suficiente oro: ${billetera.LeerOro()}");
 		}
 
 
 		public void PresionarBoton(TipoBoton boton) {
 			if (boton == TipoBoton.ACEPTAR) {
-				Configuracion configuracion = controlTienda.configuracion;
-				configuracion.GastarOro(precio);
+				Billetera billetera = controlTienda.billetera;
+				billetera.GastarOro(precio);
 
 				GestorDeSobres lectorSobres = controlTienda.gestorDeSobres;
 				lectorSobres.SetCantidad(coleccion.codigo, lectorSobres.GetCantidad(coleccion.codigo) + 1);
