@@ -1,3 +1,4 @@
+using Bounds.Modulos.Persistencia;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Parametros;
 using Ging1991.Persistencia.Direcciones;
@@ -14,6 +15,7 @@ namespace Bounds.Tienda {
 		public DireccionRecursos carpetaColecciones;
 		public GestorDeSobres gestorDeSobres;
 		public string escenaAnterior;
+		public MusicaDeFondo musicaDeFondo;
 
 		void Awake() {
 			parametrosControl.Inicializar();
@@ -23,6 +25,7 @@ namespace Bounds.Tienda {
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
 			escenaAnterior = parametros.escenaPadre;
+			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_FONDO"]);
 		}
 
 		public void PresionarAbrir() {

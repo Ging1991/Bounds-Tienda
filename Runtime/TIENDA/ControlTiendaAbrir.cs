@@ -7,6 +7,7 @@ using Bounds.Modulos.Cartas.Tinteros;
 using Ging1991.Persistencia.Direcciones;
 using Bounds.Persistencia.Parametros;
 using UnityEngine.SceneManagement;
+using Bounds.Modulos.Persistencia;
 
 namespace Bounds.Tienda {
 
@@ -21,6 +22,7 @@ namespace Bounds.Tienda {
 		public ParametrosControl parametrosControl;
 		public DireccionRecursos carpetaColecciones;
 		public GestorDeSobres gestorDeSobres;
+		public MusicaDeFondo musicaDeFondo;
 
 		void Start() {
 			parametrosControl.Inicializar();
@@ -28,6 +30,7 @@ namespace Bounds.Tienda {
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
+			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_FONDO"]);
 
 			cofre = new Cofre();
 			ilustrador.Inicializar();

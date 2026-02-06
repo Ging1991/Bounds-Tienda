@@ -11,6 +11,7 @@ namespace Bounds.Tienda {
 			parametros.direcciones["BILLETERA"] = new DireccionDinamica("CONFIGURACION", "BILLETERA.json").Generar();
 			parametros.direcciones["COLECCIONES"] = "COLECCIONES";
 			parametros.escenaPadre = "TEST";
+			parametros.direcciones["MUSICA_DE_FONDO"] = new DireccionRecursos("Musica", "Fondo").Generar();
 		}
 
 	}
