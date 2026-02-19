@@ -12,6 +12,9 @@ namespace Bounds.Tienda {
 			parametros.direcciones["COLECCIONES"] = "COLECCIONES";
 			parametros.escenaPadre = "TEST";
 			parametros.direcciones["MUSICA_DE_FONDO"] = new DireccionRecursos("Musica", "Fondo").Generar();
+			parametros.direcciones["CARTAS_RECURSO"] = "Cartas/Imagenes";
+			parametros.direcciones["CARTAS_DINAMICA"] = "IMAGENES/Cartas/Imagenes";
+
 		}
 
 	}

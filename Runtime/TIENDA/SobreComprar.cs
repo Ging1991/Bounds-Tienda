@@ -5,6 +5,7 @@ using Bounds.Modulos.Cartas.Tinteros;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
 using Ging1991.Core;
+using Ging1991.Core.Interfaces;
 using Ging1991.Interfaces;
 using Ging1991.Ventanas;
 using UnityEngine;
@@ -20,14 +21,14 @@ namespace Bounds.Tienda {
 		public GameObject nombreOBJ;
 		public GameObject posesionOBJ;
 		private ITintero tintero;
-		public IlustradorDeCartas ilustrador;
+		public ISelector<string, Sprite> ilustrador;
 		private ControlTiendaComprar controlTienda;
 
 		void Start() {
 			controlTienda = FindAnyObjectByType<ControlTiendaComprar>();
 			coleccion = new Coleccion(codigo, controlTienda.carpetaColecciones.Generar(codigo));
 			tintero = new TinteroBounds();
-			ilustrador.Inicializar();
+			ilustrador = FindAnyObjectByType<ControlTiendaComprar>().selectorImagenes;
 
 			GetComponent<ContenedorDeCartas>()?.Inicializar(ilustrador, tintero, coleccion.emblema.cartaID, coleccion.emblema.imagen);
 			precioOBJ.GetComponent<MarcoConTexto>().SetTexto($"${precio}");

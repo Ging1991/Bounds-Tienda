@@ -21,7 +21,7 @@ namespace Bounds.Tienda {
 		void Start() {
 			coleccion = new Coleccion(codigo, "");
 			tintero = new TinteroBounds();
-			ilustrador1.Inicializar();
+			//ilustrador1.Inicializar();
 			InicializarImagen();
 		}
 

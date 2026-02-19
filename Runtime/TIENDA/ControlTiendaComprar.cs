@@ -1,6 +1,9 @@
+using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Persistencia;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Parametros;
+using Ging1991.Core;
+using Ging1991.Core.Interfaces;
 using Ging1991.Persistencia.Direcciones;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +19,7 @@ namespace Bounds.Tienda {
 		public GestorDeSobres gestorDeSobres;
 		public string escenaAnterior;
 		public MusicaDeFondo musicaDeFondo;
+		public ISelector<string, Sprite> selectorImagenes;
 
 		void Awake() {
 			parametrosControl.Inicializar();
@@ -26,6 +30,10 @@ namespace Bounds.Tienda {
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
 			escenaAnterior = parametros.escenaPadre;
 			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_FONDO"]);
+			selectorImagenes = new IlustradorDeCartas(
+				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
+				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
+			);
 		}
 
 		public void PresionarAbrir() {

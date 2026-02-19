@@ -33,7 +33,10 @@ namespace Bounds.Tienda {
 			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_FONDO"]);
 
 			cofre = new Cofre();
-			ilustrador.Inicializar();
+			ilustrador = new IlustradorDeCartas(
+				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
+				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
+			);
 			ITintero tintero = new TinteroBounds();
 			List<string> claves = new List<string>(){
 				"COMPLETA100", "COMPLETA200", "COMPLETA300", "COMPLETA400", "COMPLETA500",
