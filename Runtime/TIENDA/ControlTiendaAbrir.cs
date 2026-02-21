@@ -42,7 +42,7 @@ namespace Bounds.Tienda {
 				"COMPLETA100", "COMPLETA200", "COMPLETA300", "COMPLETA400", "COMPLETA500",
 				"COMPLETA600", "ENERO2026", "ANTIGUOS", "BASICOS", "EQUIPOS",
 				"HECHIZOS", "TRAMPAS", "AURAS", "EXPLOSION", "OCEANO",
-				"OSCURIDAD", "BOSQUE", "TRUENO", "DIVINIDAD", "FAMILIA"
+				"OSCURIDAD", "BOSQUE", "TRUENO", "DIVINIDAD", "FAMILIA", "META"
 			};
 			foreach (string clave in claves) {
 				CrearSobre(new Coleccion(clave, carpetaColecciones.Generar(clave)), ilustrador, tintero);

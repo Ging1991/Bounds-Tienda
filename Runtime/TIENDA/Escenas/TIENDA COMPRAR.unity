@@ -227,6 +227,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5042337398794773125, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
+      propertyPath: codigo
+      value: META
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042337398794773125, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
       propertyPath: ilustrador
       value: 
       objectReference: {fileID: 0}

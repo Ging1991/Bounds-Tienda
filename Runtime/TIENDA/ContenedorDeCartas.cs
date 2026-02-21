@@ -16,7 +16,7 @@ namespace Bounds.Tienda {
 
 		public void Inicializar(ISelector<string, Sprite> ilustrador, ITintero tintero, int cartaID, string imagen = "A") {
 			string direccion = $"carta{cartaID}{imagen}";
-			if (direccion.EndsWith("A")) {
+			if (imagen == "A") {
 				direccion = direccion[..^1];
 			}
 
