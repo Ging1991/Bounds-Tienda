@@ -8,14 +8,15 @@ using Ging1991.Persistencia.Direcciones;
 using Bounds.Persistencia.Parametros;
 using UnityEngine.SceneManagement;
 using Bounds.Modulos.Persistencia;
+using Ging1991.Core;
 
 namespace Bounds.Tienda {
 
-	public class ControlTiendaAbrir : MonoBehaviour {
+	public class ControlTiendaAbrir : SingletonMonoBehaviour<ControlTiendaAbrir> {
 
 		public GameObject objSobre;
 		public List<GameObject> sobres = new List<GameObject>();
-		private Cofre cofre;
+		public Cofre cofre;
 		public IlustradorDeCartas ilustrador;
 
 		public Configuracion configuracion;
@@ -32,7 +33,7 @@ namespace Bounds.Tienda {
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
 			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_FONDO"]);
 
-			cofre = new Cofre();
+			cofre = new(parametros.direcciones["COFRE"], parametros.direcciones["COFRE_RECURSOS"]);
 			ilustrador = new IlustradorDeCartas(
 				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
 				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
@@ -91,7 +92,7 @@ namespace Bounds.Tienda {
 
 
 		public void AgregarCarta(int cartaID, string imagen, string rareza) {
-			cofre.AgregarCarta(new LineaReceta($"{cartaID}_{imagen}_{rareza}_1"));
+			cofre.AgregarCarta(new CartaCofreBD($"{cartaID}_{imagen}_{rareza}_1"));
 		}
 
 

@@ -43,17 +43,17 @@ namespace Bounds.Tienda {
 
 
 		protected void EstablecerPosesion(int indice) {
-			Cofre cofre = new Cofre();
+			//Cofre cofre = new Cofre();
 			List<CartaColeccionBD> cartas = coleccion.GetListaCompleta();
 			List<int> cartasID = new List<int>();
 			foreach (var carta in cartas) {
 				if (!cartasID.Contains(carta.cartaID))
 					cartasID.Add(carta.cartaID);
-			}
+			}/*
 			int cartasObtenidas = cofre.GetCantidadCartasDiferentes(cartasID);
 			int cartasTotales = cartas.Count;
 			int porcentaje = (int)(((float)cartasObtenidas / cartasTotales) * 100);
-			EstablecerTexto(indice, $"Posesión {cartasObtenidas}/{cartasTotales} ({porcentaje}%)");
+			EstablecerTexto(indice, $"Posesión {cartasObtenidas}/{cartasTotales} ({porcentaje}%)");*/
 		}
 
 

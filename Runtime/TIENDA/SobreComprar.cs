@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Bounds.Cofres;
-using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Cartas.Tinteros;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
@@ -24,7 +23,7 @@ namespace Bounds.Tienda {
 		public ISelector<string, Sprite> ilustrador;
 		private ControlTiendaComprar controlTienda;
 
-		void Start() {
+		public void Inicializar() {
 			controlTienda = FindAnyObjectByType<ControlTiendaComprar>();
 			coleccion = new Coleccion(codigo, controlTienda.carpetaColecciones.Generar(codigo));
 			tintero = new TinteroBounds();
@@ -39,17 +38,24 @@ namespace Bounds.Tienda {
 
 
 		protected string EstablecerPosesion() {
-			Cofre cofre = new Cofre();
-			List<CartaColeccionBD> cartas = coleccion.GetListaCompleta();
-			List<int> cartasID = new List<int>();
-			foreach (var carta in cartas) {
-				if (!cartasID.Contains(carta.cartaID))
-					cartasID.Add(carta.cartaID);
+			Cofre cofre = ControlTiendaComprar.Instancia.cofre;
+			List<CartaColeccionBD> cartasColeccion = coleccion.GetListaCompleta();
+			List<string> cartasID = new();
+			foreach (var cartaColeccion in cartasColeccion) {
+				cartasID.Add(GetCodigoFormato(cartaColeccion.cartaID, cartaColeccion.imagen));
 			}
-			int cartasObtenidas = cofre.GetCantidadCartasDiferentes(cartasID);
-			int cartasTotales = cartas.Count;
+			int cartasObtenidas = cofre.GetCantidadCartasPorColeccion(cartasID);
+			int cartasTotales = cartasColeccion.Count;
 			int porcentaje = (int)(((float)cartasObtenidas / cartasTotales) * 100);
 			return $"{cartasObtenidas}/{cartasTotales} ({porcentaje}%)";
+		}
+
+		protected string GetCodigoFormato(int cartaID, string imagen) {
+			if (cartaID < 10)
+				return $"00{cartaID}_{imagen}";
+			if (cartaID < 100)
+				return $"0{cartaID}_{imagen}";
+			return $"{cartaID}_{imagen}";
 		}
 
 

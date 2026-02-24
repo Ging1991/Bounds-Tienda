@@ -1,3 +1,4 @@
+using Bounds.Cofres;
 using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Persistencia;
 using Bounds.Persistencia;
@@ -10,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 namespace Bounds.Tienda {
 
-	public class ControlTiendaComprar : MonoBehaviour {
+	public class ControlTiendaComprar : SingletonMonoBehaviour<ControlTiendaComprar> {
 
 		public Configuracion configuracion;
 		public Billetera billetera;
@@ -20,12 +21,14 @@ namespace Bounds.Tienda {
 		public string escenaAnterior;
 		public MusicaDeFondo musicaDeFondo;
 		public ISelector<string, Sprite> selectorImagenes;
+		public Cofre cofre;
 
-		void Awake() {
+		void Start() {
 			parametrosControl.Inicializar();
 			ParametrosEscena parametros = parametrosControl.parametros;
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
 			billetera = new(parametros.direcciones["BILLETERA"]);
+			cofre = new(parametros.direcciones["COFRE"], parametros.direcciones["COFRE_RECURSOS"]);
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
 			escenaAnterior = parametros.escenaPadre;
@@ -34,6 +37,11 @@ namespace Bounds.Tienda {
 				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
 				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
 			);
+			foreach (var sobre in FindObjectsByType<SobreComprar>(
+						 FindObjectsInactive.Include,
+						 FindObjectsSortMode.None)) {
+				sobre.Inicializar();
+			}
 		}
 
 		public void PresionarAbrir() {
