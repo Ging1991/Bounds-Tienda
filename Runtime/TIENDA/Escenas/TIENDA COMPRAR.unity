@@ -239,6 +239,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5433827041657591197, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
+      propertyPath: codigo
+      value: EXPLOSION
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433827041657591197, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
       propertyPath: ilustrador
       value: 
       objectReference: {fileID: 0}
@@ -253,6 +257,10 @@ PrefabInstance:
     - target: {fileID: 5745569264860495894, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
       propertyPath: m_Color.b
       value: 0.54901963
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805661736474858479, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
+      propertyPath: codigo
+      value: OCEANO
       objectReference: {fileID: 0}
     - target: {fileID: 5805661736474858479, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
       propertyPath: ilustrador
