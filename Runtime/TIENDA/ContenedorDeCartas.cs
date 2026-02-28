@@ -14,7 +14,7 @@ namespace Bounds.Tienda {
 		public GameObject ilustracionOBJ;
 		public List<GameObject> titulosOBJ;
 
-		public void Inicializar(ISelector<string, Sprite> ilustrador, ITintero tintero, int cartaID, string imagen = "A") {
+		public void Inicializar(IProveedor<string, Sprite> ilustrador, ITintero tintero, int cartaID, string imagen = "A") {
 			string direccion = $"carta{cartaID}{imagen}";
 			if (imagen == "A") {
 				direccion = direccion[..^1];

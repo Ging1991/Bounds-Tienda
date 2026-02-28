@@ -20,7 +20,7 @@ namespace Bounds.Tienda {
 		public GameObject nombreOBJ;
 		public GameObject posesionOBJ;
 		private ITintero tintero;
-		public ISelector<string, Sprite> ilustrador;
+		public IProveedor<string, Sprite> ilustrador;
 		private ControlTiendaComprar controlTienda;
 
 		public void Inicializar() {

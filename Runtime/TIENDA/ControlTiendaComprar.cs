@@ -20,7 +20,7 @@ namespace Bounds.Tienda {
 		public GestorDeSobres gestorDeSobres;
 		public string escenaAnterior;
 		public MusicaDeFondo musicaDeFondo;
-		public ISelector<string, Sprite> selectorImagenes;
+		public IProveedor<string, Sprite> selectorImagenes;
 		public Cofre cofre;
 
 		void Start() {
