@@ -3,7 +3,7 @@ using Ging1991.Persistencia.Direcciones;
 
 namespace Bounds.Tienda {
 
-	public class ParametrosControlTienda : ParametrosControl {
+	public class ParametrosControlTienda : ParametrosControl {//
 
 		public override void SetParametros() {
 			parametros.direcciones["SOBRES"] = new DireccionDinamica("TIENDA", "SOBRES.json").Generar();
@@ -12,6 +12,7 @@ namespace Bounds.Tienda {
 			parametros.direcciones["COLECCIONES"] = "COLECCIONES";
 			parametros.escenaPadre = "TEST";
 			parametros.direcciones["MUSICA_DE_FONDO"] = new DireccionRecursos("Musica", "Fondo").Generar();
+			parametros.direcciones["MUSICA_DE_TIENDA"] = new DireccionRecursos("Musica", "TIENDA").Generar();
 			parametros.direcciones["CARTAS_RECURSO"] = "Cartas/Imagenes";
 			parametros.direcciones["CARTAS_DINAMICA"] = "IMAGENES/Cartas/Imagenes";
 			parametros.direcciones["COFRE_RECURSOS"] = new DireccionRecursos("MAZOS", "COFRE").Generar();

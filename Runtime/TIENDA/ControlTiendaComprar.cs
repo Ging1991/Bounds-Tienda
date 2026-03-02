@@ -32,7 +32,7 @@ namespace Bounds.Tienda {
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
 			escenaAnterior = parametros.escenaPadre;
-			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_FONDO"]);
+			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_TIENDA"]);
 			selectorImagenes = new IlustradorDeCartas(
 				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
 				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]

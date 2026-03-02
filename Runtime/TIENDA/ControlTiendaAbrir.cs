@@ -31,7 +31,7 @@ namespace Bounds.Tienda {
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
-			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_FONDO"]);
+			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_TIENDA"]);
 
 			cofre = new(parametros.direcciones["COFRE"], parametros.direcciones["COFRE_RECURSOS"]);
 			ilustrador = new IlustradorDeCartas(
