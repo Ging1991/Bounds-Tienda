@@ -3,7 +3,6 @@ using Bounds.Cofres;
 using Bounds.Modulos.Cartas.Tinteros;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
-using Ging1991.Core;
 using Ging1991.Core.Interfaces;
 using Ging1991.Interfaces;
 using Ging1991.Ventanas;
@@ -63,8 +62,10 @@ namespace Bounds.Tienda {
 			Billetera billetera = controlTienda.billetera;
 			if (billetera.LeerOro() >= precio)
 				VentanaControl.CrearVentanaConfirmar($"¿Desea comprar el sobre por ${precio}?", this);
-			else
+			else {
+				ControlTiendaComprar.Instancia.gestorDeSonidos.ReproducirSonido("FxRebote");
 				VentanaControl.CrearVentanaAceptar($"No tiene suficiente oro: ${billetera.LeerOro()}");
+			}
 		}
 
 
@@ -75,10 +76,10 @@ namespace Bounds.Tienda {
 
 				GestorDeSobres lectorSobres = controlTienda.gestorDeSobres;
 				lectorSobres.SetCantidad(coleccion.codigo, lectorSobres.GetCantidad(coleccion.codigo) + 1);
-				GameObject.Find("Sonidos").GetComponent<GestorDeSonidos>().ReproducirSonido("FxAdquisicion");
+				ControlTiendaComprar.Instancia.gestorDeSonidos.ReproducirSonido("FxAdquisicion");
 			}
 			if (boton == TipoBoton.CANCELAR) {
-				GameObject.Find("Sonidos").GetComponent<GestorDeSonidos>().ReproducirSonido("FxRebote");
+				ControlTiendaComprar.Instancia.gestorDeSonidos.ReproducirSonido("FxRebote");
 			}
 		}
 

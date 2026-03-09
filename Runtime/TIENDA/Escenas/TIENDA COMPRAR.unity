@@ -545,6 +545,7 @@ MonoBehaviour:
   parametrosControl: {fileID: 447360582}
   escenaAnterior: 
   musicaDeFondo: {fileID: 62357762}
+  gestorDeSonidos: {fileID: 929875153}
 --- !u!1 &929875151
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290af22307abdc24f8b7ec28108b212d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direccion: Sonidos
   maxInstancias: 5
 --- !u!1 &981931970
 GameObject:

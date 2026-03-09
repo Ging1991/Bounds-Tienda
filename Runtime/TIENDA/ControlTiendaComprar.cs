@@ -1,10 +1,11 @@
 using Bounds.Cofres;
 using Bounds.Modulos.Cartas.Ilustradores;
-using Bounds.Modulos.Persistencia;
+using Bounds.Musica;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Parametros;
 using Ging1991.Core;
 using Ging1991.Core.Interfaces;
+using Ging1991.Musica;
 using Ging1991.Persistencia.Direcciones;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,7 @@ namespace Bounds.Tienda {
 		public MusicaDeFondo musicaDeFondo;
 		public IProveedor<string, Sprite> selectorImagenes;
 		public Cofre cofre;
+		public GestorDeSonidos gestorDeSonidos;
 
 		void Start() {
 			parametrosControl.Inicializar();
@@ -33,6 +35,7 @@ namespace Bounds.Tienda {
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
 			escenaAnterior = parametros.escenaPadre;
 			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_TIENDA"]);
+			gestorDeSonidos.Inicializar(new DireccionRecursos(parametros.direcciones["SONIDOS"]));
 			selectorImagenes = new IlustradorDeCartas(
 				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
 				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]

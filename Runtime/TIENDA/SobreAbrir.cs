@@ -55,7 +55,7 @@ namespace Bounds.Tienda {
 		void OnMouseDown() {
 			MostrarRecompensas();
 
-			GameObject.Find("GestorVisual").GetComponent<GestorVisual>().Animar("GOLPE", "FxExplosion");
+			GameObject.Find("GestorEfectosVisuales").GetComponent<GestorEfectosVisuales>().Animar("EXPLOSION");
 			GestorDeSobres lector = sobreControl.gestorDeSobres;
 			lector.SetCantidad(coleccion.codigo, lector.GetCantidad(coleccion.codigo) - 1);
 			EstablecerCantidad();
