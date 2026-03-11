@@ -7,11 +7,13 @@ using Bounds.Modulos.Cartas.Tinteros;
 using Ging1991.Persistencia.Direcciones;
 using Bounds.Persistencia.Parametros;
 using UnityEngine.SceneManagement;
-using Bounds.Modulos.Persistencia;
 using Ging1991.Core;
 using Bounds.Musica;
 using Ging1991.Musica;
 using Bounds.Visuales;
+using Bounds.Modulos.Cartas.Persistencia.Datos;
+using Ging1991.Core.Interfaces;
+using Bounds.Modulos.Cartas.Persistencia;
 
 namespace Bounds.Tienda {
 
@@ -29,6 +31,7 @@ namespace Bounds.Tienda {
 		public MusicaDeFondo musicaDeFondo;
 		public GestorDeSonidos gestorDeSonidos;
 		public GestorEfectosVisuales gestorEfectosVisuales;
+		public IProveedor<int, CartaBD> proveedorCartas;
 
 		void Start() {
 			parametrosControl.Inicializar();
@@ -39,6 +42,7 @@ namespace Bounds.Tienda {
 			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_TIENDA"]);
 			gestorDeSonidos.Inicializar(new DireccionRecursos(parametros.direcciones["SONIDOS"]));
 			gestorEfectosVisuales.Inicializar(gestorDeSonidos);
+			proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direcciones["CARTAS_DATOS"]));
 
 			cofre = new(parametros.direcciones["COFRE"], parametros.direcciones["COFRE_RECURSOS"]);
 			ilustrador = new IlustradorDeCartas(
@@ -71,7 +75,7 @@ namespace Bounds.Tienda {
 			instancia.transform.localScale = new Vector3(1, 1, 1);
 			instancia.transform.localPosition = new Vector3(0, 0, 0);
 			SobreAbrir componente = instancia.GetComponent<SobreAbrir>();
-			componente.Iniciar(coleccion, ilustrador, tintero);
+			componente.Iniciar(proveedorCartas, coleccion, ilustrador, tintero);
 			this.sobres.Add(instancia);
 		}
 

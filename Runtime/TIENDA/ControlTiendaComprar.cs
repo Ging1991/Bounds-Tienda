@@ -1,5 +1,7 @@
 using Bounds.Cofres;
 using Bounds.Modulos.Cartas.Ilustradores;
+using Bounds.Modulos.Cartas.Persistencia;
+using Bounds.Modulos.Cartas.Persistencia.Datos;
 using Bounds.Musica;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Parametros;
@@ -28,6 +30,7 @@ namespace Bounds.Tienda {
 		void Start() {
 			parametrosControl.Inicializar();
 			ParametrosEscena parametros = parametrosControl.parametros;
+
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
 			billetera = new(parametros.direcciones["BILLETERA"]);
 			cofre = new(parametros.direcciones["COFRE"], parametros.direcciones["COFRE_RECURSOS"]);
@@ -40,10 +43,11 @@ namespace Bounds.Tienda {
 				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
 				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
 			);
+			IProveedor<int, CartaBD> proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direcciones["CARTAS_DATOS"]));
 			foreach (var sobre in FindObjectsByType<SobreComprar>(
 						 FindObjectsInactive.Include,
 						 FindObjectsSortMode.None)) {
-				sobre.Inicializar();
+				sobre.Inicializar(proveedorCartas);
 			}
 		}
 

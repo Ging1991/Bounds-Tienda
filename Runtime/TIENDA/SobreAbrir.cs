@@ -8,10 +8,10 @@ using Ging1991.Animaciones.Efectos;
 using Bounds.Modulos.Cartas;
 using Bounds.Modulos.Cartas.Tinteros;
 using Bounds.Modulos.Cartas.Ilustradores;
-using Bounds.Modulos.Cartas.Persistencia;
 using Ging1991.Core.Interfaces;
 using Bounds.Persistencia.Datos;
 using Bounds.Visuales;
+using Bounds.Modulos.Cartas.Persistencia.Datos;
 
 namespace Bounds.Tienda {
 
@@ -27,7 +27,7 @@ namespace Bounds.Tienda {
 		public IlustradorDeCartas ilustrador;
 		public ControlTiendaAbrir sobreControl;
 
-		public void Iniciar(Coleccion coleccion, IlustradorDeCartas ilustrador, ITintero tintero) {
+		public void Iniciar(IProveedor<int, CartaBD> proveedorCartas, Coleccion coleccion, IlustradorDeCartas ilustrador, ITintero tintero) {
 			sobreControl = FindAnyObjectByType<ControlTiendaAbrir>();
 			this.coleccion = coleccion;
 			this.ilustrador = ilustrador;
@@ -35,8 +35,7 @@ namespace Bounds.Tienda {
 			EstablecerCantidad();
 			nombreOBJ.GetComponent<MarcoConTexto>().SetTexto(coleccion.titulo);
 			posesionOBJ.GetComponent<MarcoConTexto>().SetTexto(EstablecerPosesion());
-			InicializarImagen();
-			DatosDeCartas.Instancia.Inicializar();
+			InicializarImagen(proveedorCartas);
 		}
 
 
@@ -89,7 +88,7 @@ namespace Bounds.Tienda {
 			ControlTiendaAbrir sobreControl = FindAnyObjectByType<ControlTiendaAbrir>();
 			sobreControl.AgregarCarta(carta.cartaID, carta.imagen, rareza);
 
-			recompensa.GetComponentInChildren<CartaFrente>().Inicializar(DatosDeCartas.Instancia, ilustrador, tintero);
+			recompensa.GetComponentInChildren<CartaFrente>().Inicializar(sobreControl.proveedorCartas, ilustrador, tintero);
 			recompensa.GetComponentInChildren<CartaFrente>().Mostrar(carta.cartaID, carta.imagen, rareza);
 			Vector3 posicionInicial = transform.localPosition;
 			recompensa.GetComponent<MoverVelocidad>().Inicializar(
@@ -118,13 +117,13 @@ namespace Bounds.Tienda {
 		}
 
 
-		protected void InicializarImagen() {
-			EstablecerImagen(ilustrador, tintero, coleccion.emblema.cartaID, coleccion.emblema.imagen);
+		protected void InicializarImagen(IProveedor<int, CartaBD> proveedorCartas) {
+			EstablecerImagen(proveedorCartas, ilustrador, tintero, coleccion.emblema.cartaID, coleccion.emblema.imagen);
 		}
 
 
-		protected void EstablecerImagen(IlustradorDeCartas ilustrador, ITintero tintero, int cartaID, string imagen) {
-			GetComponent<ContenedorDeCartas>().Inicializar(ilustrador, tintero, cartaID, imagen);
+		protected void EstablecerImagen(IProveedor<int, CartaBD> proveedorCartas, IlustradorDeCartas ilustrador, ITintero tintero, int cartaID, string imagen) {
+			GetComponent<ContenedorDeCartas>().Inicializar(proveedorCartas, ilustrador, tintero, cartaID, imagen);
 		}
 
 
@@ -141,6 +140,7 @@ namespace Bounds.Tienda {
 			return $"{cartasObtenidas}/{cartasTotales} ({porcentaje}%)";
 		}
 
+
 		protected string GetCodigoFormato(int cartaID, string imagen) {
 			if (cartaID < 10)
 				return $"00{cartaID}_{imagen}";
@@ -148,7 +148,6 @@ namespace Bounds.Tienda {
 				return $"0{cartaID}_{imagen}";
 			return $"{cartaID}_{imagen}";
 		}
-
 
 
 	}

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Bounds.Cofres;
+using Bounds.Modulos.Cartas.Persistencia.Datos;
 using Bounds.Modulos.Cartas.Tinteros;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
@@ -22,13 +23,13 @@ namespace Bounds.Tienda {
 		public IProveedor<string, Sprite> ilustrador;
 		private ControlTiendaComprar controlTienda;
 
-		public void Inicializar() {
+		public void Inicializar(IProveedor<int, CartaBD> proveedorCartas) {
 			controlTienda = FindAnyObjectByType<ControlTiendaComprar>();
 			coleccion = new Coleccion(codigo, controlTienda.carpetaColecciones.Generar(codigo));
 			tintero = new TinteroBounds();
 			ilustrador = FindAnyObjectByType<ControlTiendaComprar>().selectorImagenes;
 
-			GetComponent<ContenedorDeCartas>()?.Inicializar(ilustrador, tintero, coleccion.emblema.cartaID, coleccion.emblema.imagen);
+			GetComponent<ContenedorDeCartas>()?.Inicializar(proveedorCartas, ilustrador, tintero, coleccion.emblema.cartaID, coleccion.emblema.imagen);
 			precioOBJ.GetComponent<MarcoConTexto>().SetTexto($"${precio}");
 			precioOBJ.GetComponent<MarcoConTexto>().SetColorRelleno(Color.yellow);
 			nombreOBJ.GetComponent<MarcoConTexto>().SetTexto($"{coleccion.titulo}");
