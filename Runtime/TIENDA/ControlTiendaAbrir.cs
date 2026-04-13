@@ -14,6 +14,7 @@ using Bounds.Visuales;
 using Bounds.Modulos.Cartas.Persistencia.Datos;
 using Ging1991.Core.Interfaces;
 using Bounds.Modulos.Cartas.Persistencia;
+using Bounds.Entrenamiento;
 
 namespace Bounds.Tienda {
 
@@ -32,9 +33,11 @@ namespace Bounds.Tienda {
 		public GestorDeSonidos gestorDeSonidos;
 		public GestorEfectosVisuales gestorEfectosVisuales;
 		public IProveedor<int, CartaBD> proveedorCartas;
+		public PersonalizarUI personalizarUI;
 
 		void Start() {
 			parametrosControl.Inicializar();
+			personalizarUI.Personalizar();
 			ParametrosEscena parametros = parametrosControl.parametros;
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);

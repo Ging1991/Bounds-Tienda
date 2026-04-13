@@ -6,12 +6,13 @@ using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
 using Ging1991.Core.Interfaces;
 using Ging1991.Interfaces;
+using Ging1991.Interfaces.Salida;
 using Ging1991.Ventanas;
 using UnityEngine;
 
 namespace Bounds.Tienda {
 
-	public class SobreComprar : MonoBehaviour, IPresionarBoton {
+	public class SobreComprar : MonoBehaviour, IEjecutable {
 
 		private Coleccion coleccion;
 		public string codigo;
@@ -59,32 +60,25 @@ namespace Bounds.Tienda {
 		}
 
 
-		void OnMouseDown() {
+		void OnMouseUpAsButton() {
 			Billetera billetera = controlTienda.billetera;
-			if (billetera.LeerOro() >= precio)
-				VentanaControl.CrearVentanaConfirmar($"¿Desea comprar el sobre por ${precio}?", this);
+			if (billetera.LeerOro() >= precio) {
+				ControlTiendaComprar.Instancia.ventanaControl.MostrarVentanaConfirmar($"¿Desea comprar el sobre por ${precio}?", this);
+			}
 			else {
 				ControlTiendaComprar.Instancia.gestorDeSonidos.ReproducirSonido("FxRebote");
-				VentanaControl.CrearVentanaAceptar($"No tiene suficiente oro: ${billetera.LeerOro()}");
+				ControlTiendaComprar.Instancia.ventanaControl.MostrarVentanaAceptar($"No tiene suficiente oro: ${billetera.LeerOro()}");
 			}
 		}
 
 
-		public void PresionarBoton(TipoBoton boton) {
-			if (boton == TipoBoton.ACEPTAR) {
-				Billetera billetera = controlTienda.billetera;
-				billetera.GastarOro(precio);
-
-				GestorDeSobres lectorSobres = controlTienda.gestorDeSobres;
-				lectorSobres.SetCantidad(coleccion.codigo, lectorSobres.GetCantidad(coleccion.codigo) + 1);
-				ControlTiendaComprar.Instancia.gestorDeSonidos.ReproducirSonido("FxAdquisicion");
-			}
-			if (boton == TipoBoton.CANCELAR) {
-				ControlTiendaComprar.Instancia.gestorDeSonidos.ReproducirSonido("FxRebote");
-			}
+		public void Ejecutar() {
+			Billetera billetera = controlTienda.billetera;
+			billetera.GastarOro(precio);
+			GestorDeSobres lectorSobres = controlTienda.gestorDeSobres;
+			lectorSobres.SetCantidad(coleccion.codigo, lectorSobres.GetCantidad(coleccion.codigo) + 1);
+			ControlTiendaComprar.Instancia.gestorDeSonidos.ReproducirSonido("FxAdquisicion");
 		}
-
-
 	}
 
 }

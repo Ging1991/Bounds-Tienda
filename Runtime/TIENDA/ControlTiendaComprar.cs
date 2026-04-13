@@ -1,4 +1,5 @@
 using Bounds.Cofres;
+using Bounds.Entrenamiento;
 using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Cartas.Persistencia;
 using Bounds.Modulos.Cartas.Persistencia.Datos;
@@ -9,6 +10,7 @@ using Ging1991.Core;
 using Ging1991.Core.Interfaces;
 using Ging1991.Musica;
 using Ging1991.Persistencia.Direcciones;
+using Ging1991.Ventanas;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,8 +28,11 @@ namespace Bounds.Tienda {
 		public IProveedor<string, Sprite> selectorImagenes;
 		public Cofre cofre;
 		public GestorDeSonidos gestorDeSonidos;
+		public PersonalizarUI personalizarUI;
+		public VentanaControl ventanaControl;
 
 		void Start() {
+			personalizarUI.Personalizar();
 			parametrosControl.Inicializar();
 			ParametrosEscena parametros = parametrosControl.parametros;
 

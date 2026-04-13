@@ -12,6 +12,7 @@ using Ging1991.Core.Interfaces;
 using Bounds.Persistencia.Datos;
 using Bounds.Visuales;
 using Bounds.Modulos.Cartas.Persistencia.Datos;
+using Ging1991.Interfaces.Salida;
 
 namespace Bounds.Tienda {
 
