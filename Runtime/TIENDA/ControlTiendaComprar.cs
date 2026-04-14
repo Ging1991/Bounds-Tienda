@@ -28,13 +28,13 @@ namespace Bounds.Tienda {
 		public IProveedor<string, Sprite> selectorImagenes;
 		public Cofre cofre;
 		public GestorDeSonidos gestorDeSonidos;
-		public PersonalizarUI personalizarUI;
+		public ControlUIBounds personalizarUI;
 		public VentanaControl ventanaControl;
 
 		void Start() {
-			personalizarUI.Personalizar();
 			parametrosControl.Inicializar();
 			ParametrosEscena parametros = parametrosControl.parametros;
+			personalizarUI.Personalizar(parametros.direcciones["SISTEMA"], parametros.direcciones["COLORES"]);
 
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
 			billetera = new(parametros.direcciones["BILLETERA"]);

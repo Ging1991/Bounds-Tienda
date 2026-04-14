@@ -33,12 +33,12 @@ namespace Bounds.Tienda {
 		public GestorDeSonidos gestorDeSonidos;
 		public GestorEfectosVisuales gestorEfectosVisuales;
 		public IProveedor<int, CartaBD> proveedorCartas;
-		public PersonalizarUI personalizarUI;
+		public ControlUIBounds personalizarUI;
 
 		void Start() {
 			parametrosControl.Inicializar();
-			personalizarUI.Personalizar();
 			ParametrosEscena parametros = parametrosControl.parametros;
+			personalizarUI.Personalizar(parametros.direcciones["SISTEMA"], parametros.direcciones["COLORES"]);
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);

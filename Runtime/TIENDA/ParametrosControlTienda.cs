@@ -6,6 +6,9 @@ namespace Bounds.Tienda {
 	public class ParametrosControlTienda : ParametrosControl {//
 
 		public override void SetParametros() {
+			parametros.direcciones["COLORES"] = new DireccionRecursos("Configuracion", "COLORES").Generar();
+			parametros.direcciones["SISTEMA"] = new DireccionRecursos("Configuracion", "IDIOMA").Generar();
+
 			parametros.direcciones["SOBRES"] = new DireccionDinamica("TIENDA", "SOBRES.json").Generar();
 			parametros.direcciones["CONFIGURACION"] = new DireccionDinamica("CONFIGURACION", "CONFIGURACION.json").Generar();
 			parametros.direcciones["BILLETERA"] = new DireccionDinamica("CONFIGURACION", "BILLETERA.json").Generar();
