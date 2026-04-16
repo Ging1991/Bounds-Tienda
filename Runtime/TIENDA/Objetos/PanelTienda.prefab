@@ -673,11 +673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4913157289356876173, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
-      value: ANTIGUOS
+      value: PRINCIPIANTE
       objectReference: {fileID: 0}
     - target: {fileID: 4913157289356876173, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: precio
-      value: 400
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.b
