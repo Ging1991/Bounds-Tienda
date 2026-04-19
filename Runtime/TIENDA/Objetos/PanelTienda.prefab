@@ -263,11 +263,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1226378118210090652, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
-      value: TRUENO
+      value: COMPLETA600
       objectReference: {fileID: 0}
     - target: {fileID: 1226378118210090652, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: precio
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1966871177445041547, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: esPersonalizado
