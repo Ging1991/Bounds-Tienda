@@ -287,6 +287,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8872014991852592990, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
+      propertyPath: codigo
+      value: TRUENO
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872014991852592990, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
       propertyPath: ilustrador
       value: 
       objectReference: {fileID: 0}
