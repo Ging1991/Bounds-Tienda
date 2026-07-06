@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3039948ef0ac4479d82d718282326f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorActivado: {r: 0.78431374, g: 0.43137255, b: 0.43137255, a: 1}
-  colorDesactivado: {r: 0.627451, g: 0.19607843, b: 0.19607843, a: 1}
+  colorActivado: {r: 0.78431374, g: 0.6862745, b: 0.29411766, a: 1}
+  colorDesactivado: {r: 0.23529412, g: 0.15686275, b: 0, a: 1}
   "pesta\xF1as":
   - {fileID: 5608021647700739055}
   - {fileID: 6500940023446631042}
@@ -261,6 +261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1079801627738947318}
     m_Modifications:
+    - target: {fileID: 572467791504913446, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: PRINCIPIANTE
+      objectReference: {fileID: 0}
     - target: {fileID: 1226378118210090652, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
       value: COMPLETA600
@@ -269,9 +273,21 @@ PrefabInstance:
       propertyPath: precio
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 1662340914491117947, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: DIVINIDAD
+      objectReference: {fileID: 0}
     - target: {fileID: 1966871177445041547, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: esPersonalizado
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357055326379977732, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: ANTIGUOS
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975958674572808051, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: COMPLETA600
       objectReference: {fileID: 0}
     - target: {fileID: 4409462731757407463, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Text
@@ -295,15 +311,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.b
-      value: 0.19607843
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.g
-      value: 0.19607843
+      value: 0.15686275
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.r
-      value: 0.627451
+      value: 0.23529412
       objectReference: {fileID: 0}
     - target: {fileID: 5479310885632539568, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
@@ -312,6 +328,10 @@ PrefabInstance:
     - target: {fileID: 5479310885632539568, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: precio
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344458711681671130, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: ENERO2026
       objectReference: {fileID: 0}
     - target: {fileID: 6807332433431681881, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Pivot.x
@@ -454,6 +474,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1079801627738947318}
     m_Modifications:
+    - target: {fileID: 572467791504913446, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: COMPLETA400
+      objectReference: {fileID: 0}
     - target: {fileID: 1226378118210090652, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
       value: COMPLETA500
@@ -462,9 +486,21 @@ PrefabInstance:
       propertyPath: precio
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 1662340914491117947, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: COMPLETA300
+      objectReference: {fileID: 0}
     - target: {fileID: 1966871177445041547, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: esPersonalizado
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357055326379977732, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: COMPLETA200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975958674572808051, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: COMPLETA100
       objectReference: {fileID: 0}
     - target: {fileID: 4409462731757407463, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Text
@@ -484,15 +520,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.b
-      value: 0.19607843
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.g
-      value: 0.19607843
+      value: 0.15686275
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.r
-      value: 0.627451
+      value: 0.23529412
       objectReference: {fileID: 0}
     - target: {fileID: 5479310885632539568, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
@@ -501,6 +537,10 @@ PrefabInstance:
     - target: {fileID: 5479310885632539568, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: precio
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344458711681671130, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: COMPLETA500
       objectReference: {fileID: 0}
     - target: {fileID: 6807332433431681881, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Pivot.x
@@ -643,6 +683,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1079801627738947318}
     m_Modifications:
+    - target: {fileID: 572467791504913446, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: TRUENO
+      objectReference: {fileID: 0}
     - target: {fileID: 1226378118210090652, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
       value: FAMILIA
@@ -651,9 +695,21 @@ PrefabInstance:
       propertyPath: precio
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 1662340914491117947, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: OCEANO
+      objectReference: {fileID: 0}
     - target: {fileID: 1966871177445041547, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: esPersonalizado
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357055326379977732, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: BOSQUE
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975958674572808051, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: EXPLOSION
       objectReference: {fileID: 0}
     - target: {fileID: 3269191096521442966, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: temaRelleno
@@ -681,11 +737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.b
-      value: 0.43137255
+      value: 0.29411766
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.g
-      value: 0.43137255
+      value: 0.6862745
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.r
@@ -698,6 +754,10 @@ PrefabInstance:
     - target: {fileID: 5479310885632539568, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: precio
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344458711681671130, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: FAMILIA
       objectReference: {fileID: 0}
     - target: {fileID: 6807332433431681881, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Pivot.x

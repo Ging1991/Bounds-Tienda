@@ -6,13 +6,13 @@ using Bounds.Cofres;
 using Ging1991.Interfaces;
 using Ging1991.Animaciones.Efectos;
 using Bounds.Modulos.Cartas;
-using Bounds.Modulos.Cartas.Tinteros;
 using Bounds.Modulos.Cartas.Ilustradores;
 using Ging1991.Core.Interfaces;
 using Bounds.Persistencia.Datos;
 using Bounds.Visuales;
 using Bounds.Modulos.Cartas.Persistencia.Datos;
 using Ging1991.Interfaces.Salida;
+using Bounds.Cartas;
 
 namespace Bounds.Tienda {
 
@@ -21,22 +21,20 @@ namespace Bounds.Tienda {
 		public Coleccion coleccion;
 		public string nombre;
 		public int cantidad;
-		public GameObject nombreOBJ;
-		public GameObject cantidadOBJ;
-		public GameObject posesionOBJ;
-		private ITintero tintero;
 		public IlustradorDeCartas ilustrador;
 		public ControlTiendaAbrir sobreControl;
+		public ContenedorID contenedorID;
+		public MarcoConTexto cantidadOBJ;
 
-		public void Iniciar(IProveedor<int, CartaBD> proveedorCartas, Coleccion coleccion, IlustradorDeCartas ilustrador, ITintero tintero) {
+		public void Inicializar(CartaGenerador cartaGenerador, Coleccion coleccion) {
 			sobreControl = FindAnyObjectByType<ControlTiendaAbrir>();
 			this.coleccion = coleccion;
-			this.ilustrador = ilustrador;
-			this.tintero = tintero;
+
+			contenedorID.generador = cartaGenerador;
+			contenedorID.MostrarCartaID(coleccion.emblema.cartaID, coleccion.emblema.imagen, "N");
+			contenedorID.primitiva.SetTituloTexto($"{coleccion.titulo}", 0);
+			contenedorID.primitiva.SetTituloTexto($"{EstablecerPosesion()}", 1);
 			EstablecerCantidad();
-			nombreOBJ.GetComponent<MarcoConTexto>().SetTexto(coleccion.titulo);
-			posesionOBJ.GetComponent<MarcoConTexto>().SetTexto(EstablecerPosesion());
-			InicializarImagen(proveedorCartas);
 		}
 
 
@@ -48,7 +46,7 @@ namespace Bounds.Tienda {
 				control.Remover(gameObject);
 				Destroy(gameObject);
 			}
-			cantidadOBJ.GetComponent<MarcoConTexto>().SetTexto($"{cantidad}");
+			cantidadOBJ.SetTexto($"{cantidad}");
 		}
 
 
@@ -89,8 +87,7 @@ namespace Bounds.Tienda {
 			ControlTiendaAbrir sobreControl = FindAnyObjectByType<ControlTiendaAbrir>();
 			sobreControl.AgregarCarta(carta.cartaID, carta.imagen, rareza);
 
-			recompensa.GetComponentInChildren<CartaFrente>().Inicializar(sobreControl.proveedorCartas, ilustrador, tintero);
-			recompensa.GetComponentInChildren<CartaFrente>().Mostrar(carta.cartaID, carta.imagen, rareza);
+			recompensa.GetComponentInChildren<CartaImagenID>().MostrarCartaID(carta.cartaID, carta.imagen, rareza);
 			Vector3 posicionInicial = transform.localPosition;
 			recompensa.GetComponent<MoverVelocidad>().Inicializar(
 				posicionInicial,
@@ -119,12 +116,12 @@ namespace Bounds.Tienda {
 
 
 		protected void InicializarImagen(IProveedor<int, CartaBD> proveedorCartas) {
-			EstablecerImagen(proveedorCartas, ilustrador, tintero, coleccion.emblema.cartaID, coleccion.emblema.imagen);
+			//EstablecerImagen(proveedorCartas, ilustrador, tintero, coleccion.emblema.cartaID, coleccion.emblema.imagen);
 		}
 
 
-		protected void EstablecerImagen(IProveedor<int, CartaBD> proveedorCartas, IlustradorDeCartas ilustrador, ITintero tintero, int cartaID, string imagen) {
-			GetComponent<ContenedorDeCartas>().Inicializar(proveedorCartas, ilustrador, tintero, cartaID, imagen);
+		protected void EstablecerImagen(IProveedor<int, CartaBD> proveedorCartas, IlustradorDeCartas ilustrador, int cartaID, string imagen) {
+			//GetComponent<ContenedorDeCartas>().Inicializar(proveedorCartas, ilustrador, tintero, cartaID, imagen);
 		}
 
 

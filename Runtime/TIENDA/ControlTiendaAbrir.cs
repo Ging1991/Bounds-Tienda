@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Bounds.Persistencia;
 using Bounds.Cofres;
 using Bounds.Modulos.Cartas.Ilustradores;
-using Bounds.Modulos.Cartas.Tinteros;
 using Ging1991.Persistencia.Direcciones;
 using Bounds.Persistencia.Parametros;
 using UnityEngine.SceneManagement;
@@ -15,6 +14,9 @@ using Bounds.Modulos.Cartas.Persistencia.Datos;
 using Ging1991.Core.Interfaces;
 using Bounds.Modulos.Cartas.Persistencia;
 using Bounds.Entrenamiento;
+using Bounds.Cartas;
+using Bounds.Persistencia.proveedores;
+using Ging1991.Persistencia.Lectores;
 
 namespace Bounds.Tienda {
 
@@ -34,6 +36,7 @@ namespace Bounds.Tienda {
 		public GestorEfectosVisuales gestorEfectosVisuales;
 		public IProveedor<int, CartaBD> proveedorCartas;
 		public ControlUIBounds personalizarUI;
+		public CartaGenerador cartaGenerador;
 
 		void Start() {
 			parametrosControl.Inicializar();
@@ -52,21 +55,30 @@ namespace Bounds.Tienda {
 				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
 				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
 			);
-			ITintero tintero = new TinteroBounds();
 			List<string> claves = new List<string>(){
 				"COMPLETA100", "COMPLETA200", "COMPLETA300", "COMPLETA400", "COMPLETA500",
 				"COMPLETA600", "ENERO2026", "ANTIGUOS", "BASICOS", "EQUIPOS",
 				"HECHIZOS", "TRAMPAS", "AURAS", "EXPLOSION", "OCEANO",
 				"OSCURIDAD", "BOSQUE", "TRUENO", "DIVINIDAD", "FAMILIA", "META", "PRINCIPIANTE"
 			};
+
+			cartaGenerador.Inicializar(
+				ilustrador,
+				proveedorCartas,
+				new ProveedorColores(
+					parametrosControl.parametros.direcciones["COLORES"],
+					TipoLector.RECURSOS
+				)
+			);
+
 			foreach (string clave in claves) {
-				CrearSobre(new Coleccion(clave, carpetaColecciones.Generar(clave)), ilustrador, tintero);
+				CrearSobre(new Coleccion(clave, carpetaColecciones.Generar(clave)), ilustrador);
 			}
 			Organizar();
 		}
 
 
-		private void CrearSobre(Coleccion coleccion, IlustradorDeCartas ilustrador, ITintero tintero) {
+		private void CrearSobre(Coleccion coleccion, IlustradorDeCartas ilustrador) {
 			int cantidad = gestorDeSobres.GetCantidad(coleccion.codigo);
 			if (cantidad == 0)
 				return;
@@ -78,7 +90,7 @@ namespace Bounds.Tienda {
 			instancia.transform.localScale = new Vector3(1, 1, 1);
 			instancia.transform.localPosition = new Vector3(0, 0, 0);
 			SobreAbrir componente = instancia.GetComponent<SobreAbrir>();
-			componente.Iniciar(proveedorCartas, coleccion, ilustrador, tintero);
+			componente.Inicializar(cartaGenerador, coleccion);
 			this.sobres.Add(instancia);
 		}
 

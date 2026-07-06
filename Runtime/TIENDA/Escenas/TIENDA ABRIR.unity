@@ -292,6 +292,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4097178661517924365, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
+      propertyPath: generador
+      value: 
+      objectReference: {fileID: 589443254}
     - target: {fileID: 6257064669699118057, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
       propertyPath: unidadTiempo
       value: 0
@@ -671,8 +675,8 @@ GameObject:
   m_Component:
   - component: {fileID: 589443249}
   - component: {fileID: 589443248}
-  - component: {fileID: 589443250}
   - component: {fileID: 589443253}
+  - component: {fileID: 589443254}
   m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
@@ -692,13 +696,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb53915632ee9741b7f5da329a8ec3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objSobre: {fileID: 8253189124300386640, guid: e6a461247c2fa4842844b8c49349e489, type: 3}
+  objSobre: {fileID: 3691934492382886867, guid: 654ff2d95de570441aefc4d63317d1c8, type: 3}
   sobres: []
   parametrosControl: {fileID: 589443253}
   musicaDeFondo: {fileID: 828453786}
   gestorDeSonidos: {fileID: 2027265873}
   gestorEfectosVisuales: {fileID: 1970789961}
   personalizarUI: {fileID: 1371726907}
+  cartaGenerador: {fileID: 589443254}
 --- !u!4 &589443249
 Transform:
   m_ObjectHideFlags: 0
@@ -719,18 +724,6 @@ Transform:
   - {fileID: 1371726909}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &589443250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589443247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77d43119ad35860419fe5201d3564dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &589443253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,6 +737,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parametros: {fileID: 11400000, guid: fd37356195e5ec540a413b836f0ddbd0, type: 2}
+--- !u!114 &589443254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589443247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd0c2e325c6a134f9c9c56700085928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &650361821 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8495746375107893419, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
@@ -868,6 +873,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4097178661517924365, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
+      propertyPath: generador
+      value: 
+      objectReference: {fileID: 589443254}
     - target: {fileID: 8495746375107893419, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1216,6 +1225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4097178661517924365, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
+      propertyPath: generador
+      value: 
+      objectReference: {fileID: 589443254}
     - target: {fileID: 8495746375107893419, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1350,6 +1363,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4097178661517924365, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
+      propertyPath: generador
+      value: 
+      objectReference: {fileID: 589443254}
     - target: {fileID: 8495746375107893419, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1584,6 +1601,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4097178661517924365, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
+      propertyPath: generador
+      value: 
+      objectReference: {fileID: 589443254}
     - target: {fileID: 8495746375107893419, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1754,6 +1775,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4097178661517924365, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
+      propertyPath: generador
+      value: 
+      objectReference: {fileID: 589443254}
     - target: {fileID: 8495746375107893419, guid: 8f0cba463c024124dbcda26e50cde540, type: 3}
       propertyPath: m_RootOrder
       value: 5

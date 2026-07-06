@@ -1,3 +1,4 @@
+using Bounds.Cartas;
 using Bounds.Cofres;
 using Bounds.Entrenamiento;
 using Bounds.Modulos.Cartas.Ilustradores;
@@ -6,10 +7,12 @@ using Bounds.Modulos.Cartas.Persistencia.Datos;
 using Bounds.Musica;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Parametros;
+using Bounds.Persistencia.proveedores;
 using Ging1991.Core;
 using Ging1991.Core.Interfaces;
 using Ging1991.Musica;
 using Ging1991.Persistencia.Direcciones;
+using Ging1991.Persistencia.Lectores;
 using Ging1991.Ventanas;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,6 +33,7 @@ namespace Bounds.Tienda {
 		public GestorDeSonidos gestorDeSonidos;
 		public ControlUIBounds personalizarUI;
 		public VentanaControl ventanaControl;
+		public CartaGenerador cartaGenerador;
 
 		void Start() {
 			parametrosControl.Inicializar();
@@ -48,11 +52,21 @@ namespace Bounds.Tienda {
 				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
 				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
 			);
+
 			IProveedor<int, CartaBD> proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direcciones["CARTAS_DATOS"]));
+			cartaGenerador.Inicializar(
+				selectorImagenes,
+				proveedorCartas,
+				new ProveedorColores(
+					parametrosControl.parametros.direcciones["COLORES"],
+					TipoLector.RECURSOS
+				)
+			);
+
 			foreach (var sobre in FindObjectsByType<SobreComprar>(
 						 FindObjectsInactive.Include,
 						 FindObjectsSortMode.None)) {
-				sobre.Inicializar(proveedorCartas);
+				sobre.Inicializar(cartaGenerador);
 			}
 		}
 

@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
+using Bounds.Cartas;
 using Bounds.Cofres;
-using Bounds.Modulos.Cartas.Persistencia.Datos;
-using Bounds.Modulos.Cartas.Tinteros;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
 using Ging1991.Core.Interfaces;
-using Ging1991.Interfaces;
 using Ging1991.Interfaces.Salida;
-using Ging1991.Ventanas;
 using UnityEngine;
 
 namespace Bounds.Tienda {
@@ -17,24 +14,19 @@ namespace Bounds.Tienda {
 		private Coleccion coleccion;
 		public string codigo;
 		public int precio;
-		public GameObject precioOBJ;
-		public GameObject nombreOBJ;
-		public GameObject posesionOBJ;
-		private ITintero tintero;
-		public IProveedor<string, Sprite> ilustrador;
 		private ControlTiendaComprar controlTienda;
+		public ContenedorID contenedorID;
+		public MarcoConTexto precioOBJ;
 
-		public void Inicializar(IProveedor<int, CartaBD> proveedorCartas) {
+		public void Inicializar(CartaGenerador cartaGenerador) {
 			controlTienda = FindAnyObjectByType<ControlTiendaComprar>();
 			coleccion = new Coleccion(codigo, controlTienda.carpetaColecciones.Generar(codigo));
-			tintero = new TinteroBounds();
-			ilustrador = FindAnyObjectByType<ControlTiendaComprar>().selectorImagenes;
 
-			GetComponent<ContenedorDeCartas>()?.Inicializar(proveedorCartas, ilustrador, tintero, coleccion.emblema.cartaID, coleccion.emblema.imagen);
-			precioOBJ.GetComponent<MarcoConTexto>().SetTexto($"${precio}");
-			precioOBJ.GetComponent<MarcoConTexto>().SetColorRelleno(Color.yellow);
-			nombreOBJ.GetComponent<MarcoConTexto>().SetTexto($"{coleccion.titulo}");
-			posesionOBJ.GetComponent<MarcoConTexto>().SetTexto($"{EstablecerPosesion()}");
+			contenedorID.generador = cartaGenerador;
+			contenedorID.MostrarCartaID(coleccion.emblema.cartaID, coleccion.emblema.imagen, "N");
+			contenedorID.primitiva.SetTituloTexto($"{coleccion.titulo}", 0);
+			contenedorID.primitiva.SetTituloTexto($"{EstablecerPosesion()}", 1);
+			precioOBJ.SetTexto($"${precio}");
 		}
 
 
@@ -50,6 +42,7 @@ namespace Bounds.Tienda {
 			int porcentaje = (int)(((float)cartasObtenidas / cartasTotales) * 100);
 			return $"{cartasObtenidas}/{cartasTotales} ({porcentaje}%)";
 		}
+
 
 		protected string GetCodigoFormato(int cartaID, string imagen) {
 			if (cartaID < 10)

@@ -2,7 +2,6 @@
 using Bounds.Cofres;
 using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Cartas.Persistencia.Datos;
-using Bounds.Modulos.Cartas.Tinteros;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
 using Ging1991.Core.Interfaces;
@@ -16,7 +15,6 @@ namespace Bounds.Tienda {
 		public string codigo;
 		protected readonly int INDICE_ILUSTRACION = 0;
 		protected readonly int INDICE_NOMBRE = 1;
-		public ITintero tintero;
 		public IlustradorDeCartas ilustrador1;
 
 		protected void InicializarImagen(IProveedor<int, CartaBD> proveedorCartas) {
@@ -31,7 +29,7 @@ namespace Bounds.Tienda {
 
 
 		protected void EstablecerImagen(IProveedor<int, CartaBD> proveedorCartas, int indice, int cartaID) {
-			GetComponent<ContenedorDeCartas>()?.Inicializar(proveedorCartas, ilustrador1, tintero, cartaID);
+			//GetComponent<ContenedorDeCartas>()?.Inicializar(proveedorCartas, ilustrador1, tintero, cartaID);
 		}
 
 
