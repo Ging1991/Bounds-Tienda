@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorActivado: {r: 0.78431374, g: 0.6862745, b: 0.29411766, a: 1}
-  colorDesactivado: {r: 0.23529412, g: 0.15686275, b: 0, a: 1}
+  colorDesactivado: {r: 0.78431374, g: 0.5882353, b: 0.19607843, a: 1}
   "pesta\xF1as":
   - {fileID: 5608021647700739055}
   - {fileID: 6500940023446631042}
@@ -311,15 +311,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.g
-      value: 0.15686275
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.r
-      value: 0.23529412
+      value: 0.78431374
       objectReference: {fileID: 0}
     - target: {fileID: 5479310885632539568, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
@@ -445,6 +445,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8399712123423921732, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: RELLENO_CLARO
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -520,15 +524,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.g
-      value: 0.15686275
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 5066492201181321507, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Color.r
-      value: 0.23529412
+      value: 0.78431374
       objectReference: {fileID: 0}
     - target: {fileID: 5479310885632539568, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
@@ -653,6 +657,10 @@ PrefabInstance:
     - target: {fileID: 8390160671701460847, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399712123423921732, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: RELLENO_CLARO
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
