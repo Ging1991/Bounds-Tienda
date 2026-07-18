@@ -31,12 +31,20 @@ namespace Bounds.Tienda {
 		public ParametrosControl parametrosControl;
 		public DireccionRecursos carpetaColecciones;
 		public GestorDeSobres gestorDeSobres;
-		public MusicaDeFondo musicaDeFondo;
 		public GestorDeSonidos gestorDeSonidos;
 		public GestorEfectosVisuales gestorEfectosVisuales;
 		public IProveedor<int, CartaBD> proveedorCartas;
 		public ControlUIBounds personalizarUI;
 		public CartaGenerador cartaGenerador;
+
+		private void InicializarMusica(string direccion) {
+			MusicaAmbiental musicaAmbiental = MusicaAmbiental.Instancia;
+			if (musicaAmbiental.actual != "GENERAL") {
+				musicaAmbiental.Inicializar(new ProveedorAudios(new DireccionRecursos(direccion)));
+				musicaAmbiental.Reproducir("GENERAL");
+			}
+		}
+
 
 		void Start() {
 			parametrosControl.Inicializar();
@@ -45,7 +53,7 @@ namespace Bounds.Tienda {
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
-			musicaDeFondo.Inicializar(parametros.direcciones["MUSICA_DE_TIENDA"]);
+			InicializarMusica(parametros.direcciones["MUSICA_AMBIENTAL"]);
 			gestorDeSonidos.Inicializar(new DireccionRecursos(parametros.direcciones["SONIDOS"]));
 			gestorEfectosVisuales.Inicializar(gestorDeSonidos);
 			proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direcciones["CARTAS_DATOS"]));

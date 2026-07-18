@@ -3,9 +3,10 @@ using Ging1991.Persistencia.Direcciones;
 
 namespace Bounds.Tienda {
 
-	public class ParametrosControlTienda : ParametrosControl {//
+	public class ParametrosControlTienda : ParametrosControl {
 
 		public override void SetParametros() {
+			parametros.direcciones["MUSICA_AMBIENTAL"] = "Sonidos/Ambiente";
 			parametros.direcciones["COLORES"] = new DireccionRecursos("Configuracion", "COLORES").Generar();
 			parametros.direcciones["SISTEMA"] = new DireccionRecursos("Configuracion", "IDIOMA").Generar();
 
