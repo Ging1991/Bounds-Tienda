@@ -1,6 +1,5 @@
 using Bounds.Cartas;
 using Bounds.Cofres;
-using Bounds.Entrenamiento;
 using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Cartas.Persistencia;
 using Bounds.Modulos.Cartas.Persistencia.Datos;
@@ -22,7 +21,6 @@ namespace Bounds.Tienda {
 	public class ControlTiendaComprar : SingletonMonoBehaviour<ControlTiendaComprar> {
 
 		public Configuracion configuracion;
-		public Billetera billetera;
 		public ParametrosControl parametrosControl;
 		public DireccionRecursos carpetaColecciones;
 		public GestorDeSobres gestorDeSobres;
@@ -33,6 +31,7 @@ namespace Bounds.Tienda {
 		public ControlUIBounds personalizarUI;
 		public VentanaControl ventanaControl;
 		public CartaGenerador cartaGenerador;
+		public RegistroGlobal registroGlobal;
 
 		private void InicializarMusica(string direccion) {
 			MusicaAmbiental musicaAmbiental = MusicaAmbiental.Instancia;
@@ -48,8 +47,12 @@ namespace Bounds.Tienda {
 			ParametrosEscena parametros = parametrosControl.parametros;
 			personalizarUI.Personalizar(parametros.direcciones["SISTEMA"], parametros.direcciones["COLORES"]);
 
+			registroGlobal = RegistroGlobal.Instancia;
+			if (!registroGlobal.inicializado) {
+				registroGlobal.Inicializar(parametros.direcciones["BILLETERA"]);
+			}
+
 			configuracion = new(parametros.direcciones["CONFIGURACION"]);
-			billetera = new(parametros.direcciones["BILLETERA"]);
 			cofre = new(parametros.direcciones["COFRE"], parametros.direcciones["COFRE_RECURSOS"]);
 			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direcciones["SOBRES"]);

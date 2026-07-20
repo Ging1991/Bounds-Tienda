@@ -17,10 +17,12 @@ namespace Bounds.Tienda {
 		private ControlTiendaComprar controlTienda;
 		public ContenedorID contenedorID;
 		public MarcoConTexto precioOBJ;
+		private Billetera billetera;
 
 		public void Inicializar(CartaGenerador cartaGenerador) {
 			controlTienda = FindAnyObjectByType<ControlTiendaComprar>();
 			coleccion = new Coleccion(codigo, controlTienda.carpetaColecciones.Generar(codigo));
+			billetera = RegistroGlobal.Instancia.billetera;
 
 			contenedorID.generador = cartaGenerador;
 			contenedorID.MostrarCartaID(coleccion.emblema.cartaID, coleccion.emblema.imagen, "N");
@@ -54,7 +56,6 @@ namespace Bounds.Tienda {
 
 
 		void OnMouseUpAsButton() {
-			Billetera billetera = controlTienda.billetera;
 			if (billetera.LeerOro() >= precio) {
 				ControlTiendaComprar.Instancia.ventanaControl.MostrarVentanaConfirmar($"¿Desea comprar el sobre por ${precio}?", this);
 			}
@@ -66,7 +67,6 @@ namespace Bounds.Tienda {
 
 
 		public void Ejecutar() {
-			Billetera billetera = controlTienda.billetera;
 			billetera.GastarOro(precio);
 			GestorDeSobres lectorSobres = controlTienda.gestorDeSobres;
 			lectorSobres.SetCantidad(coleccion.codigo, lectorSobres.GetCantidad(coleccion.codigo) + 1);
