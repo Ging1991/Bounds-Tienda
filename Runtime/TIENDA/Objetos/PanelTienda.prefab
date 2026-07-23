@@ -301,6 +301,10 @@ PrefabInstance:
       propertyPath: precio
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 4806897498342083290, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: COMPETITIVO
+      objectReference: {fileID: 0}
     - target: {fileID: 4913157289356876173, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
       value: ENERO2026
@@ -518,6 +522,10 @@ PrefabInstance:
       propertyPath: precio
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 4806897498342083290, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: COMPLETAS
+      objectReference: {fileID: 0}
     - target: {fileID: 4913157289356876173, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: precio
       value: 300
@@ -725,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4409462731757407463, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Text
-      value: "Tem\xE1ticos"
+      value: Estandar
       objectReference: {fileID: 0}
     - target: {fileID: 4799504567843884200, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
@@ -734,6 +742,10 @@ PrefabInstance:
     - target: {fileID: 4799504567843884200, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: precio
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806897498342083290, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: codigo
+      value: ESTANDAR
       objectReference: {fileID: 0}
     - target: {fileID: 4913157289356876173, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo

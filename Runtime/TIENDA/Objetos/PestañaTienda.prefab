@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3606140231928042967}
   - component: {fileID: 5629594238945639534}
   - component: {fileID: 4409462731757407463}
+  - component: {fileID: 4806897498342083290}
   m_Layer: 5
   m_Name: Texto
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Pesta\xF1a 1"
+--- !u!114 &4806897498342083290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625513705353148756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d80fdea8d95d124d8517d7a1a9e9f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoOBJ: {fileID: 4409462731757407463}
+  codigo: 
 --- !u!1 &2991450265606918334
 GameObject:
   m_ObjectHideFlags: 0
