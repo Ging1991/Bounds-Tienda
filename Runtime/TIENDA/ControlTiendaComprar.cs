@@ -1,12 +1,13 @@
 using Bounds.Cartas;
 using Bounds.Cofres;
-using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Cartas.Persistencia;
 using Bounds.Modulos.Cartas.Persistencia.Datos;
 using Bounds.Musica;
 using Bounds.Persistencia;
-using Bounds.Persistencia.Parametros;
 using Bounds.Persistencia.proveedores;
+using Bounds.Sistema;
+using Bounds.Sistema.Ilustradores;
+using Bounds.Sistema.Parametros;
 using Ging1991.Core;
 using Ging1991.Core.Interfaces;
 using Ging1991.Musica;
@@ -20,8 +21,7 @@ namespace Bounds.Tienda {
 
 	public class ControlTiendaComprar : SingletonMonoBehaviour<ControlTiendaComprar> {
 
-		public Configuracion configuracion;
-		public ParametrosControl parametrosControl;
+		public ControlParametros parametrosControl;
 		public DireccionRecursos carpetaColecciones;
 		public GestorDeSobres gestorDeSobres;
 		public string escenaAnterior;
@@ -31,12 +31,11 @@ namespace Bounds.Tienda {
 		public ControlUIBounds personalizarUI;
 		public VentanaControl ventanaControl;
 		public CartaGenerador cartaGenerador;
-		public RegistroGlobal registroGlobal;
 
-		private void InicializarMusica(string direccion) {
+		private void InicializarMusica(Direccion direccion) {
 			MusicaAmbiental musicaAmbiental = MusicaAmbiental.Instancia;
 			if (musicaAmbiental.actual != "GENERAL") {
-				musicaAmbiental.Inicializar(new ProveedorAudios(new DireccionRecursos(direccion)));
+				musicaAmbiental.Inicializar(new ProveedorAudios(direccion));
 				musicaAmbiental.Reproducir("GENERAL");
 			}
 		}
@@ -44,32 +43,29 @@ namespace Bounds.Tienda {
 
 		void Start() {
 			parametrosControl.Inicializar();
-			ParametrosEscena parametros = parametrosControl.parametros;
-			personalizarUI.Personalizar(parametros.direcciones["SISTEMA"], parametros.direcciones["COLORES"]);
-
-			registroGlobal = RegistroGlobal.Instancia;
-			if (!registroGlobal.inicializado) {
-				registroGlobal.Inicializar(parametros.direcciones["BILLETERA"]);
-			}
-
-			configuracion = new(parametros.direcciones["CONFIGURACION"]);
-			cofre = new(parametros.direcciones["COFRE"], parametros.direcciones["COFRE_RECURSOS"]);
-			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
-			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
-			escenaAnterior = parametros.escenaPadre;
+			ParametrosGlobales parametros = parametrosControl.parametros;
+			if (!RegistroGlobal.Instancia.inicializado)
+				RegistroGlobal.Instancia.Inicializar(parametros);
 			InicializarMusica(parametros.direcciones["MUSICA_AMBIENTAL"]);
-			gestorDeSonidos.Inicializar(new DireccionRecursos(parametros.direcciones["SONIDOS"]));
+
+			personalizarUI.Personalizar(parametros.direccionesGeneradas["SISTEMA"], parametros.direccionesGeneradas["COLORES"]);
+
+			cofre = new(parametros.direccionesGeneradas["COFRE"], parametros.direccionesGeneradas["COFRE_RECURSOS"]);
+			carpetaColecciones = new(parametros.direccionesGeneradas["COLECCIONES"]);
+			gestorDeSobres = new(parametros.direccionesGeneradas["SOBRES"]);
+			escenaAnterior = parametros.escenaAnterior;
+			gestorDeSonidos.Inicializar(new DireccionRecursos(parametros.direccionesGeneradas["SONIDOS"]));
 			selectorImagenes = new IlustradorDeCartas(
-				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
-				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
+				new DireccionRecursos(parametrosControl.parametros.direccionesGeneradas["CARTAS_RECURSO"]),
+				new DireccionDinamica(parametrosControl.parametros.direccionesGeneradas["CARTAS_DINAMICA"])
 			);
 
-			IProveedor<int, CartaBD> proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direcciones["CARTAS_DATOS"]));
+			IProveedor<int, CartaBD> proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direccionesGeneradas["CARTAS_DATOS"]));
 			cartaGenerador.Inicializar(
 				selectorImagenes,
 				proveedorCartas,
 				new ProveedorColores(
-					parametrosControl.parametros.direcciones["COLORES"],
+					parametrosControl.parametros.direccionesGeneradas["COLORES"],
 					TipoLector.RECURSOS
 				)
 			);

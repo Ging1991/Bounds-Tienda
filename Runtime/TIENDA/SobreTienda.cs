@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Bounds.Cofres;
-using Bounds.Modulos.Cartas.Ilustradores;
 using Bounds.Modulos.Cartas.Persistencia.Datos;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
+using Bounds.Sistema.Ilustradores;
 using Ging1991.Core.Interfaces;
 using UnityEngine;
 

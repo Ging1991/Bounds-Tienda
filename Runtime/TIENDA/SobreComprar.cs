@@ -3,6 +3,7 @@ using Bounds.Cartas;
 using Bounds.Cofres;
 using Bounds.Persistencia;
 using Bounds.Persistencia.Datos;
+using Bounds.Sistema;
 using Ging1991.Core.Interfaces;
 using Ging1991.Interfaces.Salida;
 using UnityEngine;

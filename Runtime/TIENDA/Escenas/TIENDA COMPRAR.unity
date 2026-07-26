@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2429ace1b8330e140961998ad76ee014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parametros: {fileID: 11400000, guid: fd37356195e5ec540a413b836f0ddbd0, type: 2}
+  parametros: {fileID: 11400000, guid: 8b1979d5b301a6c44b5c6500860c37b1, type: 2}
 --- !u!114 &447360583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +326,6 @@ MonoBehaviour:
   personalizarUI: {fileID: 764718293}
   ventanaControl: {fileID: 383589221}
   cartaGenerador: {fileID: 447360584}
-  registroGlobal: {fileID: 0}
 --- !u!114 &447360584
 MonoBehaviour:
   m_ObjectHideFlags: 0

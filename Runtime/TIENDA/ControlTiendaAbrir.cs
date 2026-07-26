@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using Bounds.Persistencia;
 using Bounds.Cofres;
-using Bounds.Modulos.Cartas.Ilustradores;
 using Ging1991.Persistencia.Direcciones;
-using Bounds.Persistencia.Parametros;
 using UnityEngine.SceneManagement;
 using Ging1991.Core;
 using Bounds.Musica;
@@ -17,6 +15,9 @@ using Bounds.Entrenamiento;
 using Bounds.Cartas;
 using Bounds.Persistencia.proveedores;
 using Ging1991.Persistencia.Lectores;
+using Bounds.Sistema;
+using Bounds.Sistema.Parametros;
+using Bounds.Sistema.Ilustradores;
 
 namespace Bounds.Tienda {
 
@@ -27,8 +28,7 @@ namespace Bounds.Tienda {
 		public Cofre cofre;
 		public IlustradorDeCartas ilustrador;
 
-		public Configuracion configuracion;
-		public ParametrosControl parametrosControl;
+		public ControlParametros parametrosControl;
 		public DireccionRecursos carpetaColecciones;
 		public GestorDeSobres gestorDeSobres;
 		public GestorDeSonidos gestorDeSonidos;
@@ -37,10 +37,11 @@ namespace Bounds.Tienda {
 		public ControlUIBounds personalizarUI;
 		public CartaGenerador cartaGenerador;
 
-		private void InicializarMusica(string direccion) {
+
+		private void InicializarMusica(Direccion direccion) {
 			MusicaAmbiental musicaAmbiental = MusicaAmbiental.Instancia;
 			if (musicaAmbiental.actual != "GENERAL") {
-				musicaAmbiental.Inicializar(new ProveedorAudios(new DireccionRecursos(direccion)));
+				musicaAmbiental.Inicializar(new ProveedorAudios(direccion));
 				musicaAmbiental.Reproducir("GENERAL");
 			}
 		}
@@ -48,20 +49,23 @@ namespace Bounds.Tienda {
 
 		void Start() {
 			parametrosControl.Inicializar();
-			ParametrosEscena parametros = parametrosControl.parametros;
-			personalizarUI.Personalizar(parametros.direcciones["SISTEMA"], parametros.direcciones["COLORES"]);
-			configuracion = new(parametros.direcciones["CONFIGURACION"]);
-			carpetaColecciones = new(parametros.direcciones["COLECCIONES"]);
-			gestorDeSobres = new(parametros.direcciones["SOBRES"]);
+			ParametrosGlobales parametros = parametrosControl.parametros;
+			if (!RegistroGlobal.Instancia.inicializado)
+				RegistroGlobal.Instancia.Inicializar(parametros);
 			InicializarMusica(parametros.direcciones["MUSICA_AMBIENTAL"]);
-			gestorDeSonidos.Inicializar(new DireccionRecursos(parametros.direcciones["SONIDOS"]));
-			gestorEfectosVisuales.Inicializar(gestorDeSonidos);
-			proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direcciones["CARTAS_DATOS"]));
 
-			cofre = new(parametros.direcciones["COFRE"], parametros.direcciones["COFRE_RECURSOS"]);
+			personalizarUI.Personalizar(parametros.direccionesGeneradas["SISTEMA"], parametros.direccionesGeneradas["COLORES"]);
+
+			carpetaColecciones = new(parametros.direccionesGeneradas["COLECCIONES"]);
+			gestorDeSobres = new(parametros.direccionesGeneradas["SOBRES"]);
+			gestorDeSonidos.Inicializar(new DireccionRecursos(parametros.direccionesGeneradas["SONIDOS"]));
+			gestorEfectosVisuales.Inicializar(gestorDeSonidos);
+			proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direccionesGeneradas["CARTAS_DATOS"]));
+
+			cofre = new(parametros.direccionesGeneradas["COFRE"], parametros.direccionesGeneradas["COFRE_RECURSOS"]);
 			ilustrador = new IlustradorDeCartas(
-				parametrosControl.parametros.direcciones["CARTAS_RECURSO"],
-				parametrosControl.parametros.direcciones["CARTAS_DINAMICA"]
+				new DireccionRecursos(parametrosControl.parametros.direccionesGeneradas["CARTAS_RECURSO"]),
+				new DireccionDinamica(parametrosControl.parametros.direccionesGeneradas["CARTAS_DINAMICA"])
 			);
 			List<string> claves = new List<string>(){
 				"COMPLETA100", "COMPLETA200", "COMPLETA300", "COMPLETA400", "COMPLETA500",
@@ -74,7 +78,7 @@ namespace Bounds.Tienda {
 				ilustrador,
 				proveedorCartas,
 				new ProveedorColores(
-					parametrosControl.parametros.direcciones["COLORES"],
+					parametrosControl.parametros.direccionesGeneradas["COLORES"],
 					TipoLector.RECURSOS
 				)
 			);

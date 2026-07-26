@@ -6,6 +6,7 @@
         "Bounds.Visor",
         "Bounds.Cofres",
         "Bounds.Visuales",
+        "Bounds.Sistema",
         "Bounds.Persistencia",
 		"Bounds.Entrenamiento",
 		"Ging1991.Core",
