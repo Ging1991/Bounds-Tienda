@@ -263,7 +263,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 572467791504913446, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
-      value: PRINCIPIANTE
+      value: ETERNO
       objectReference: {fileID: 0}
     - target: {fileID: 1226378118210090652, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
@@ -336,6 +336,10 @@ PrefabInstance:
     - target: {fileID: 6344458711681671130, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
       value: ENERO2026
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394143899323113401, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6807332433431681881, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Pivot.x
@@ -454,7 +458,8 @@ PrefabInstance:
       value: RELLENO_CLARO
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6394143899323113401, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
@@ -875,6 +880,10 @@ PrefabInstance:
       propertyPath: padre
       value: 
       objectReference: {fileID: 5291582643800668430}
+    - target: {fileID: 8390160671701460847, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

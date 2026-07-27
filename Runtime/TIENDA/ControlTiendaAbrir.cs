@@ -69,9 +69,9 @@ namespace Bounds.Tienda {
 			);
 			List<string> claves = new List<string>(){
 				"COMPLETA100", "COMPLETA200", "COMPLETA300", "COMPLETA400", "COMPLETA500",
-				"COMPLETA600", "ENERO2026", "ANTIGUOS", "BASICOS", "EQUIPOS",
+				"COMPLETA600", "ANTIGUOS", "BASICOS", "EQUIPOS",
 				"HECHIZOS", "TRAMPAS", "AURAS", "EXPLOSION", "OCEANO",
-				"OSCURIDAD", "BOSQUE", "TRUENO", "DIVINIDAD", "FAMILIA", "META", "PRINCIPIANTE"
+				"OSCURIDAD", "BOSQUE", "TRUENO", "DIVINIDAD", "FAMILIA", "ETERNO"
 			};
 
 			cartaGenerador.Inicializar(
