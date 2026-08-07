@@ -426,6 +426,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1209291255989984389, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
+      propertyPath: codigo
+      value: LAUNIX
+      objectReference: {fileID: 0}
     - target: {fileID: 4511446968602502144, guid: fffffcde84a6021459dd5952334b9ed2, type: 3}
       propertyPath: m_Name
       value: PanelTienda
