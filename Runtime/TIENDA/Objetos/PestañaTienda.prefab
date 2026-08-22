@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3606140231928042967}
   - component: {fileID: 5629594238945639534}
   - component: {fileID: 4409462731757407463}
-  - component: {fileID: 4806897498342083290}
+  - component: {fileID: 1947039557681675300}
   m_Layer: 5
   m_Name: Texto
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Pesta\xF1a 1"
---- !u!114 &4806897498342083290
+--- !u!114 &1947039557681675300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,11 +89,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 625513705353148756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d80fdea8d95d124d8517d7a1a9e9f65, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ab57d110d60e354aaf90a970e296f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textoOBJ: {fileID: 4409462731757407463}
-  codigo: 
+  clave: 
+  destruirAlTraducir: 1
+  esEspecial: 0
+  esAutotraducible: 0
 --- !u!1 &2991450265606918334
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0b2f36aa315fd43a3f77652506b25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objetivo: {fileID: 0}
+  objetivo: {fileID: 5066492201181321507}
   codigo: RELLENO
 --- !u!1001 &1385164620840687540
 PrefabInstance:

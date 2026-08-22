@@ -23,49 +23,34 @@ namespace Bounds.Tienda {
 
 	public class ControlTiendaAbrir : SingletonMonoBehaviour<ControlTiendaAbrir> {
 
+		public ControlBounds controlBounds;
+		private ParametrosGlobales parametros;
+
 		public GameObject objSobre;
 		public List<GameObject> sobres = new List<GameObject>();
 		public Cofre cofre;
 		public IlustradorDeCartas ilustrador;
 
-		public ControlParametros parametrosControl;
 		public DireccionRecursos carpetaColecciones;
 		public GestorDeSobres gestorDeSobres;
 		public GestorDeSonidos gestorDeSonidos;
 		public GestorEfectosVisuales gestorEfectosVisuales;
 		public IProveedor<int, CartaBD> proveedorCartas;
-		public ControlUIBounds personalizarUI;
 		public CartaGenerador cartaGenerador;
 
-
-		private void InicializarMusica(Direccion direccion) {
-			MusicaAmbiental musicaAmbiental = MusicaAmbiental.Instancia;
-			if (musicaAmbiental.actual != "GENERAL") {
-				musicaAmbiental.Inicializar(new ProveedorAudios(direccion));
-				musicaAmbiental.Reproducir("GENERAL");
-			}
-		}
-
-
 		void Start() {
-			parametrosControl.Inicializar();
-			ParametrosGlobales parametros = parametrosControl.parametros;
-			if (!RegistroGlobal.Instancia.inicializado)
-				RegistroGlobal.Instancia.Inicializar(parametros);
-			InicializarMusica(parametros.direcciones["MUSICA_AMBIENTAL"]);
-
-			personalizarUI.Personalizar(parametros.direccionesGeneradas["SISTEMA"], parametros.direccionesGeneradas["COLORES"]);
+			parametros = controlBounds.InicializarEscena("GENERAL");
 
 			carpetaColecciones = new(parametros.direccionesGeneradas["COLECCIONES"]);
 			gestorDeSobres = new(parametros.direccionesGeneradas["SOBRES"]);
 			gestorDeSonidos.Inicializar(new DireccionRecursos(parametros.direccionesGeneradas["SONIDOS"]));
 			gestorEfectosVisuales.Inicializar(gestorDeSonidos);
-			proveedorCartas = new LectorCartas(new DireccionRecursos(parametrosControl.parametros.direccionesGeneradas["CARTAS_DATOS"]));
+			proveedorCartas = new LectorCartas(new DireccionRecursos(parametros.direccionesGeneradas["CARTAS_DATOS"]));
 
 			cofre = new(parametros.direccionesGeneradas["COFRE"], parametros.direccionesGeneradas["COFRE_RECURSOS"]);
 			ilustrador = new IlustradorDeCartas(
-				new DireccionRecursos(parametrosControl.parametros.direccionesGeneradas["CARTAS_RECURSO"]),
-				new DireccionDinamica(parametrosControl.parametros.direccionesGeneradas["CARTAS_DINAMICA"])
+				new DireccionRecursos(parametros.direccionesGeneradas["CARTAS_RECURSO"]),
+				new DireccionDinamica(parametros.direccionesGeneradas["CARTAS_DINAMICA"])
 			);
 			List<string> claves = new List<string>(){
 				"COMPLETA100", "COMPLETA200", "COMPLETA300", "COMPLETA400", "COMPLETA500",
@@ -78,7 +63,7 @@ namespace Bounds.Tienda {
 				ilustrador,
 				proveedorCartas,
 				new ProveedorColores(
-					parametrosControl.parametros.direccionesGeneradas["COLORES"],
+					parametros.direccionesGeneradas["COLORES"],
 					TipoLector.RECURSOS
 				)
 			);

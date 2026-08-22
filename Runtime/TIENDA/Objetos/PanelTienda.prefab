@@ -285,6 +285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Divinidad
       objectReference: {fileID: 0}
+    - target: {fileID: 1947039557681675300, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: clave
+      value: COMPETITIVO
+      objectReference: {fileID: 0}
     - target: {fileID: 1966871177445041547, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: esPersonalizado
       value: 1
@@ -641,6 +645,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Completa300
       objectReference: {fileID: 0}
+    - target: {fileID: 1947039557681675300, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: clave
+      value: COMPLETAS
+      objectReference: {fileID: 0}
     - target: {fileID: 1966871177445041547, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: esPersonalizado
       value: 1
@@ -869,6 +877,10 @@ PrefabInstance:
     - target: {fileID: 1662340914491117947, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
       value: OCEANO
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947039557681675300, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
+      propertyPath: clave
+      value: ESTANDAR
       objectReference: {fileID: 0}
     - target: {fileID: 1966871177445041547, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: esPersonalizado
