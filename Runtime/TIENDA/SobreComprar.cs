@@ -19,6 +19,7 @@ namespace Bounds.Tienda {
 		public ContenedorID contenedorID;
 		public MarcoConTexto precioOBJ;
 		private Billetera billetera;
+		private IProveedor<string, string> traducciones;
 
 		public void Inicializar(CartaGenerador cartaGenerador) {
 			controlTienda = FindAnyObjectByType<ControlTiendaComprar>();
@@ -30,18 +31,20 @@ namespace Bounds.Tienda {
 			contenedorID.primitiva.SetTituloTexto($"{coleccion.titulo}", 0);
 			contenedorID.primitiva.SetTituloTexto($"{EstablecerPosesion()}", 1);
 			precioOBJ.SetTexto($"${precio}");
+			traducciones = RegistroGlobal.Instancia.proveedorIdioma;
 		}
 
 
 		protected string EstablecerPosesion() {
 			Cofre cofre = ControlTiendaComprar.Instancia.cofre;
-			List<CartaColeccionBD> cartasColeccion = coleccion.GetListaCompleta();
-			List<string> cartasID = new();
-			foreach (var cartaColeccion in cartasColeccion) {
-				cartasID.Add(GetCodigoFormato(cartaColeccion.cartaID, cartaColeccion.imagen));
+			List<CartaColeccionBD> cartas = coleccion.GetListaCompleta();
+			List<int> cartasID = new();
+			foreach (var carta in cartas) {
+				if (!cartasID.Contains(carta.cartaID))
+					cartasID.Add(carta.cartaID);
 			}
-			int cartasObtenidas = cofre.GetCantidadCartasPorColeccion(cartasID);
-			int cartasTotales = cartasColeccion.Count;
+			int cartasObtenidas = cofre.GetCantidadCartasDiferentes(cartasID);
+			int cartasTotales = cartasID.Count;
 			int porcentaje = (int)(((float)cartasObtenidas / cartasTotales) * 100);
 			return $"{cartasObtenidas}/{cartasTotales} ({porcentaje}%)";
 		}
@@ -58,11 +61,12 @@ namespace Bounds.Tienda {
 
 		void OnMouseUpAsButton() {
 			if (billetera.LeerOro() >= precio) {
-				ControlTiendaComprar.Instancia.ventanaControl.MostrarVentanaConfirmar($"¿Desea comprar el sobre por ${precio}?", this);
+				ControlTiendaComprar.Instancia.ventanaControl.MostrarVentanaConfirmar(
+					traducciones.GetElemento("DESEA_COMPRAR_POR_PRECIO").Replace("[PRECIO]", $"{precio}"), this);
 			}
 			else {
 				ControlTiendaComprar.Instancia.gestorDeSonidos.ReproducirSonido("FxRebote");
-				ControlTiendaComprar.Instancia.ventanaControl.MostrarVentanaAceptar($"No tiene suficiente oro: ${billetera.LeerOro()}");
+				ControlTiendaComprar.Instancia.ventanaControl.MostrarVentanaAceptar(traducciones.GetElemento("NO_TIENE_ORO_PRECIO").Replace("[PRECIO]", $"{billetera.LeerOro()}"));
 			}
 		}
 

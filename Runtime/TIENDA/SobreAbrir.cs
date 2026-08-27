@@ -125,13 +125,14 @@ namespace Bounds.Tienda {
 
 		protected string EstablecerPosesion() {
 			Cofre cofre = ControlTiendaAbrir.Instancia.cofre;
-			List<CartaColeccionBD> cartasColeccion = coleccion.GetListaCompleta();
-			List<string> cartasID = new();
-			foreach (var cartaColeccion in cartasColeccion) {
-				cartasID.Add(GetCodigoFormato(cartaColeccion.cartaID, cartaColeccion.imagen));
+			List<CartaColeccionBD> cartas = coleccion.GetListaCompleta();
+			List<int> cartasID = new();
+			foreach (var carta in cartas) {
+				if (!cartasID.Contains(carta.cartaID))
+					cartasID.Add(carta.cartaID);
 			}
-			int cartasObtenidas = cofre.GetCantidadCartasPorColeccion(cartasID);
-			int cartasTotales = cartasColeccion.Count;
+			int cartasObtenidas = cofre.GetCantidadCartasDiferentes(cartasID);
+			int cartasTotales = cartasID.Count;
 			int porcentaje = (int)(((float)cartasObtenidas / cartasTotales) * 100);
 			return $"{cartasObtenidas}/{cartasTotales} ({porcentaje}%)";
 		}
