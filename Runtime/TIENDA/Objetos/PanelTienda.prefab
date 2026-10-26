@@ -263,11 +263,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 522791419015410757, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: m_Name
-      value: Eterno
+      value: Familia
       objectReference: {fileID: 0}
     - target: {fileID: 572467791504913446, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
-      value: ETERNO
+      value: FAMILIA
       objectReference: {fileID: 0}
     - target: {fileID: 1226378118210090652, guid: 2ccaae313c58ada42aaea843800a0e21, type: 3}
       propertyPath: codigo
